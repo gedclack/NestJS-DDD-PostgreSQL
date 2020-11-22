@@ -7,40 +7,40 @@ import { Promotion } from 'src/domain/promotion/promotion';
 import { CreatePromotionDTO } from './dto/create-dto';
 import { UpdatePromotionDTO } from './dto/update-dto';
 
-@Controller('order')
+@Controller('promotion')
 export class PromotionController {
 
 	constructor(
-		private orderSelect: Select,
-		private orderInsert: Insert,
-		private orderUpdate: Update,
-		private orderDelete: DeletePromotion
+		private promotionSelect: Select,
+		private promotionInsert: Insert,
+		private promotionUpdate: Update,
+		private promotionDelete: DeletePromotion
 	){}
 
 	@Get()
 	getPromotions(): Promise<Promotion[]> {
-		return this.orderSelect.GetAll();
+		return this.promotionSelect.GetAll();
 	}
 
 	@Get(':id')
 	getPromotion(@Param('id') id: string): Promise<Promotion> {
-		return this.orderSelect.GetOne(+id);
+		return this.promotionSelect.GetOne(+id);
 	}
 
 	@Post()
 	async createPromotion(@Body() d: CreatePromotionDTO): Promise<string> {
-		let res = await this.orderInsert.Create(d);
+		let res = await this.promotionInsert.Create(d);
 		return res;
 	}
 
 	@Put(':id')
 	async updatePromotion(@Param('id') id: string, @Body() d: UpdatePromotionDTO) {
-		let res = await this.orderUpdate.Update(+id, d);
+		let res = await this.promotionUpdate.Update(+id, d);
 		return res;
 	}
 
 	@Delete(':id')
 	async removePromotion(@Param('id') id: string) {
-		return await this.orderDelete.Delete(+id);
+		return await this.promotionDelete.Delete(+id);
 	}
 }
