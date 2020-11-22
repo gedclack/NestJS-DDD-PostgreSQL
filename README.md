@@ -1,6 +1,6 @@
 ## Description
 
-+ Building API with Domain-Driven Design
++ Building API with NestJS implementing Domain-Driven Design
 + Use PostgreSQL with migration support
 
 ## Installation
@@ -31,10 +31,11 @@ $ npx typeorm migration:generate -n <migration-name>
 
 ---
 
-## API Docs
+## Documentation
 
-```
-Generate docs here...
+```bash
+# Swagger
+http://localhost:3000/spec
 ```
 
 ---
